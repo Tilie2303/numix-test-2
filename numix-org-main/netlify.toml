@@ -1,6 +1,7 @@
 [build]
+  base = "numix-org-main"
   command = "npm run build"
-  publish = ".output/public"
+  publish = "numix-org-main/.output/public"
 
 [[redirects]]
   from = "/*"
