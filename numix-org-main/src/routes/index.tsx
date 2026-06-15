@@ -3,10 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AuraField } from "@/components/AuraField";
 import { LiveDemo } from "@/components/LiveDemo";
-import editorialUnderstanding from "@/assets/editorial-understanding.jpg";
-import editorialEvidence from "@/assets/editorial-evidence.jpg";
-import editorialVitrine from "@/assets/editorial-vitrine.jpg";
-import coinHero from "@/assets/coin-hero.jpg";
+import { GoldStorySection } from "@/components/GoldStorySection";
+import coinHero from "@/assets/editorial-understanding.jpg";
 import coinDemo from "@/assets/coin-demo.jpg";
 import { ArrowUpRight } from "lucide-react";
 
@@ -47,29 +45,15 @@ function Landing() {
         <LiveDemo />
       </section>
 
-
-
-      {/* ───────── UNDERSTANDING ───────── */}
-      <EditorialChapter
-        image={editorialUnderstanding}
-        statement={<>True <span className="italic text-ice">value,</span><br />beyond the price.</>}
-        align="left"
-      />
-
-      {/* ───────── EVIDENCE ───────── */}
-      <EditorialChapter
-        image={editorialEvidence}
-        statement={<>Fine <span className="italic text-ice">data,</span><br />expert insights unlocked.</>}
-        align="right"
-      />
-
-
-      {/* ───────── EDITORIAL III ───────── */}
-      <EditorialChapter
-        image={editorialVitrine}
-        statement={<>Collect with <span className="italic text-ice">confidence,</span><br />Build value.</>}
-        align="right"
-      />
+      {/* ───────── GOLD STORY ───────── */}
+      {/*
+        To add your Higgsfield videos once generated, pass the props:
+          kingVideoSrc="/videos/king.mp4"
+          kingVideoPoster="/videos/king-poster.jpg"
+          traderVideoSrc="/videos/trader.mp4"
+          traderVideoPoster="/videos/trader-poster.jpg"
+      */}
+      <GoldStorySection />
 
       {/* ───────── CLOSING SEARCH ───────── */}
       <section className="relative z-10 mx-auto max-w-4xl px-5 pt-20 pb-28 text-center md:px-6 md:pt-28 md:pb-36">
@@ -126,7 +110,8 @@ function Landing() {
                 The Owl Surge: Why Athenian Tetradrachms Outperformed Gold in 2024
               </h3>
               <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                Auction data shows a 34% price appreciation for high-grade Owls of Athena. We dissect the grades — from EF40 to MS63 — and what they mean for entry points.
+                Auction data shows a 34% price appreciation for high-grade Owls of Athena. We dissect
+                the grades — from EF40 to MS63 — and what they mean for entry points.
               </p>
               <div className="mt-5 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-ice transition group-hover:opacity-80">
                 <span>Read analysis</span>
@@ -162,7 +147,8 @@ function Landing() {
                 Davenport 747: A Thaler's Journey from VF30 to Record AU58
               </h3>
               <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                Tracing every verified auction appearance since 2011. How strike quality, cabinet toning and provenance created a €48,000 delta between grades.
+                Tracing every verified auction appearance since 2011. How strike quality, cabinet
+                toning and provenance created a €48,000 delta between grades.
               </p>
               <div className="mt-5 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-ice transition group-hover:opacity-80">
                 <span>Read analysis</span>
@@ -194,48 +180,3 @@ function Landing() {
     </div>
   );
 }
-
-function EditorialChapter({
-  image,
-  statement,
-  align,
-}: {
-  image: string;
-  statement: React.ReactNode;
-  align: "left" | "right";
-}) {
-  return (
-    <section className="relative z-10 w-full">
-      <div className="relative h-[60vh] min-h-[420px] w-full overflow-hidden md:h-[70vh]">
-        <img
-          src={image}
-          alt=""
-          loading="lazy"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {/* top fade into page */}
-        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background to-transparent" />
-        {/* bottom anchor — heavy on mobile so the statement always reads, lighter on desktop */}
-        <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-background via-background/85 to-transparent md:h-[35%] md:via-background/40" />
-
-        <div
-          className={`absolute inset-0 flex items-end px-7 pb-16 md:items-center md:px-24 md:pb-0 ${
-            align === "right" ? "md:justify-end" : "md:justify-start"
-          }`}
-        >
-          <div className="max-w-xl">
-            <h3
-              className="font-serif text-[1.6rem] leading-[1.08] tracking-tight text-foreground sm:text-[2rem] md:text-[2.4rem]"
-              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.55)" }}
-            >
-              {statement}
-            </h3>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
